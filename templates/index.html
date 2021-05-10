@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home page</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css')}}">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Parekh's data repository</h1>
+            <h3>Your IP: {{ip}}</h3>
+        </div>
+        <!-- <p>
+            <form method="POST" action="/search">
+                <p>File Name: <input type="text" name="inpFile" /></p>
+                <button type="submit">Enter</button>
+            </form>
+        </p> -->
+        <br />
+        <p>
+            {% for file, fname in files.items() %}
+                <a href="{{url_for('.download_file', name=file)}}">{{ fname }}</a>
+                <br />
+            {% endfor %}
+        </p>
+    </body>
+</html>
